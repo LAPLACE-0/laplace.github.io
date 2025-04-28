@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tratamiento de Aguas Residuales</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9f7ef;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #1f8e49;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        section {
+            padding: 20px;
+        }
+        h1 {
+            color: #1f8e49;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #2e6b30;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+        .meter {
+            margin-top: 20px;
+        }
+        input[type="range"] {
+            width: 100%;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 30px;
+            background-color: #1f8e49;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #186b38;
+        }
+        footer {
+            background-color: #1f8e49;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .additional-info {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 5px solid #1f8e49;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .box {
+            background-color: #e6ffe6;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .box img {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Tratamiento de Aguas Residuales</h1>
+</header>
+
+<section>
+    <div class="container">
+        <h2>¿Qué son las aguas residuales?</h2>
+        <p>Las aguas residuales son el resultado de actividades domésticas, industriales y agrícolas que contaminan el agua con diversos elementos, como sustancias químicas, desechos orgánicos y partículas sólidas. Estas aguas, si no se tratan adecuadamente, pueden causar daños graves al medio ambiente y la salud pública.</p>
+
+        <h2>Importancia del tratamiento de aguas residuales</h2>
+        <p>El tratamiento de las aguas residuales es crucial para proteger los recursos hídricos, reducir la contaminación ambiental y evitar enfermedades. Al procesar las aguas contaminadas antes de liberarlas, se reduce el impacto negativo en los ecosistemas y se preserva el agua limpia para el consumo humano y otras actividades.</p>
+
+        <h2>Formas de tratar las aguas residuales</h2>
+        <div class="grid">
+            <div class="box">
+                <img src="https://example.com/casa.png" alt="Tratamiento en casa">
+                <h3>En Casa</h3>
+                <p>El tratamiento en el hogar puede incluir sistemas de filtrado, el uso de productos ecológicos, y la reutilización de aguas grises para riego o limpieza.</p>
+            </div>
+            <div class="box">
+                <img src="https://example.com/trabajo.png" alt="Tratamiento en el trabajo">
+                <h3>En el Trabajo</h3>
+                <p>En el entorno laboral, se pueden usar tecnologías avanzadas para el reciclaje de agua y reducir el consumo, implementando prácticas sostenibles.</p>
+            </div>
+            <div class="box">
+                <img src="https://example.com/empresas.png" alt="Tratamiento en empresas">
+                <h3>En Empresas</h3>
+                <p>Las grandes industrias tienen sistemas complejos de tratamiento, que incluyen procesos físicos, químicos y biológicos para limpiar grandes volúmenes de agua.</p>
+            </div>
+        </div>
+
+        <div class="additional-info">
+            <h3>Medidas Preventivas</h3>
+            <p>Es importante minimizar la generación de aguas residuales utilizando productos biodegradables, evitando el uso excesivo de químicos, y fomentando el reciclaje y la reutilización del agua siempre que sea posible.</p>
+        </div>
+
+        <h2>Medidor para Identificar Aguas Residuales</h2>
+        <p>Utiliza el siguiente medidor para evaluar la calidad de las aguas residuales:</p>
+
+        <div class="meter">
+            <label for="turbidez">Turbidez:</label><br>
+            <input type="range" id="turbidez" name="turbidez" min="0" max="10" step="1" oninput="actualizarMedidor()">
+            <p>Nivel de turbidez: <span id="turbidez-nivel">5</span>/10</p>
+
+            <label for="olor">Olor:</label><br>
+            <input type="range" id="olor" name="olor" min="0" max="10" step="1" oninput="actualizarMedidor()">
+            <p>Nivel de olor: <span id="olor-nivel">5</span>/10</p>
+
+            <label for="color">Coloración:</label><br>
+            <input type="range" id="color" name="color" min="0" max="10" step="1" oninput="actualizarMedidor()">
+            <p>Nivel de coloración: <span id="color-nivel">5</span>/10</p>
+
+            <button onclick="generarDescripcion()">Evaluar Agua Residual</button>
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Tratamiento de Aguas Residuales - Todos los derechos reservados</p>
+</footer>
+
+<script>
+    function actualizarMedidor() {
+        document.getElementById("turbidez-nivel").innerText = document.getElementById("turbidez").value;
+        document.getElementById("olor-nivel").innerText = document.getElementById("olor").value;
+        document.getElementById("color-nivel").innerText = document.getElementById("color").value;
+    }
+
+    function generarDescripcion() {
+        const turbidez = document.getElementById("turbidez").value;
+        const olor = document.getElementById("olor").value;
+        const color = document.getElementById("color").value;
+
+        let descripcion = "";
+        let tratamientoCasa = "";
+        let tratamientoTrabajo = "";
+        let tratamientoEmpresa = "";
+        let precauciones = "";
+
+        if (turbidez > 7 && olor > 7 && color > 7) {
+            descripcion = "El agua residual es altamente contaminada y requiere un tratamiento avanzado.";
+            tratamientoCasa = "En casa, se debe implementar un sistema de tratamiento doméstico avanzado para filtrar y depurar el agua.";
+            tratamientoTrabajo = "En el trabajo, se deben usar tecnologías de purificación avanzadas y reciclar agua siempre que sea posible.";
+            tratamientoEmpresa = "Las empresas deben usar plantas de tratamiento con procesos químicos y biológicos avanzados.";
+            precauciones = "Evitar el contacto directo con el agua y garantizar que se someta a un tratamiento completo.";
+        } else if (turbidez > 4 || olor > 4 || color > 4) {
+            descripcion = "El agua residual presenta un nivel moderado de contaminación.";
+            tratamientoCasa = "En casa, se puede utilizar un sistema de filtrado y reutilizar el agua para tareas no esenciales como el riego.";
+            tratamientoTrabajo = "En el trabajo, se recomienda minimizar el uso de productos químicos y fomentar el reciclaje de agua.";
+            tratamientoEmpresa = "Las empresas pueden tratar este tipo de agua usando procesos de filtración y tratamientos biológicos simples.";
+            precauciones = "Evitar el uso directo de esta agua sin tratamiento previo, especialmente para consumo o higiene.";
+        } else {
+            descripcion = "El agua residual tiene un bajo nivel de contaminación.";
+            tratamientoCasa = "En casa, puede reutilizarse para riego y limpieza después de un tratamiento básico.";
+            tratamientoTrabajo = "En el trabajo, se pueden implementar soluciones de reciclaje de bajo costo.";
+            tratamientoEmpresa = "Las empresas pueden reutilizar esta agua tras un proceso simple de filtración.";
+            precauciones = "Aunque el agua tiene bajo riesgo, es recomendable tratarla antes de su uso.";
+        }
+
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = `
+            <h3>Descripción del Agua Residual</h3>
+            <p>${descripcion}</p>
+            <h4>Tratamiento en Casa:</h4>
+            <p>${tratamientoCasa}</p>
+            <h4>Tratamiento en el Trabajo:</h4>
+            <p>${tratamientoTrabajo}</p>
+            <h4>Tratamiento en las Empresas:</h4>
+            <p>${tratamientoEmpresa}</p>
+            <h4>Precauciones:</h4>
+            <p>${precauciones}</p>
+        `;
+    }
+</script>
+
+</body>
+</html>
